@@ -1,19 +1,24 @@
 // The array of ingredients the user can add to a sandwich
 //  This will be updated after we fetch.
-let ingredients = [];
+const ingredientList = {
+    ingredients:[],
+
+    render: function() {
+        const ingredientUl = document.querySelector('.ingredient-list');
+    
+        // Empty the ingredientList before adding any content to it.
+        ingredientUl.innerHTML = '';
+    
+        ingredients.forEach(ingredient => {
+            const ingredientDiv = this.renderIngredientCard(ingredient);
+            ingredientUl.append(ingredientDiv)
+        })
+    },
+}
+
 
 // Updates the DOM to display a list of ingredients
-function renderIngredientList() {
-    const ingredientUl = document.querySelector('.ingredient-list');
 
-    // Empty the ingredientList before adding any content to it.
-    ingredientUl.innerHTML = '';
-
-    ingredients.forEach(ingredient => {
-        const ingredientDiv = renderIngredientCard(ingredient);
-        ingredientUl.append(ingredientDiv)
-    })
-}
 
 // Creates a DIV to display a single ingredient
 function renderIngredientCard(ingredient) {
